@@ -28,8 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.mts",
-    "src/app/[locale]/[...rest]/default.tsxxjs",
-    "src/app/[locale]/[...rest]/default.tsxxjs"
+    "src/app/[locale]/[rest]/default.tsxxjs",
+    "src/app/[locale]/[rest]/default.tsxxjs"
   ],
   "exclude": ["node_modules"]
 }
