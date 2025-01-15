@@ -11,7 +11,6 @@ export default async function LocaleLayout({
   params: Promise<{ locale: 'ka' | 'en' | 'ru' }>;
 }) {
   const { locale } = await params;
-  console.log(params);
 
   // Validate locale in case a user typed an unknown param
   if (!routing.locales.includes(locale)) {
