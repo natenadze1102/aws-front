@@ -22,10 +22,12 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <html lang={locale}>
-      <body>
+    <html lang={locale} className='h-full'>
+      <body className='bg-amber-400'>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>{children}</Providers>
+          <Providers>
+            <div>{children}</div>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

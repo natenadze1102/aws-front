@@ -1,11 +1,9 @@
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+
+import { HelloComponent } from './HelloComponent';
 
 export default function TestPage() {
   const t = useTranslations();
-  return (
-    <div>
-      <Link href='/about'>{t('hello')}</Link>
-    </div>
-  );
+
+  return <HelloComponent text={t('hello')} />;
 }

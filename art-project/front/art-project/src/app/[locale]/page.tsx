@@ -1,11 +1,5 @@
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { redirect } from 'next/navigation';
 
-export default function HomePage() {
-  const t = useTranslations();
-  return (
-    <div>
-      <Link href='/about'>{t('hello')}</Link>
-    </div>
-  );
+export default function RootPage() {
+  redirect('/home');
 }
