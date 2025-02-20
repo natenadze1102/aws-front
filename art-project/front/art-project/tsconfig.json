@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     "next.config.mts",
     "src/app/[locale]/[rest]/default.tsxxjs",
-    "src/app/[locale]/[rest]/default.tsxxjs"
+    "src/app/[locale]/[rest]/default.tsxxjs",
+    "src/modules/dashboard/settings/UserDas"
   ],
   "exclude": ["node_modules"]
 }

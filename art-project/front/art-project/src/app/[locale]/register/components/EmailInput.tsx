@@ -1,5 +1,5 @@
 import React from 'react';
-import { UseFormReturn, Path, FieldValues } from 'react-hook-form';
+import { FieldValues, Path, UseFormReturn } from 'react-hook-form';
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 

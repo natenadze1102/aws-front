@@ -2,15 +2,17 @@ import { z } from 'zod';
 
 export const rolesSchema = z.enum(['USER', 'ARTIST']);
 export const emailValidationStatusSchema = z.enum(['PENDING', 'SUCCESS', 'FAILED']);
+export const passwordSchema = z
+  .string()
+  .min(1, 'Password is required')
+  .min(8, 'Password must be at least 8 characters');
+export const repeatPasswordSchema = z.string().min(1, 'Please confirm your password');
 
 export const userRegisterInputSchema = z
   .object({
     email: z.string().min(1, 'Email is required').email('Invalid email address'),
-    password: z
-      .string()
-      .min(1, 'Password is required')
-      .min(8, 'Password must be at least 8 characters'),
-    repeatPassword: z.string().min(1, 'Please confirm your password'),
+    password: passwordSchema,
+    repeatPassword: repeatPasswordSchema,
   })
   .refine((data) => data.password === data.repeatPassword, {
     message: "Passwords don't match",
@@ -25,9 +27,6 @@ export const userRegisterResponseSchema = z.object({
   fullName: z.string(),
   role: rolesSchema, // Enum for allowed roles
   createdAt: z.string().datetime(), // String representing ISO datetime format
-  updatedAt: z.string().datetime(), // String representing ISO datetime format
-  deleted: z.boolean(), // Boolean for deleted status
-  deletedAt: z.string().nullable(), // Nullable string for deletion timestamp
 });
 
 export const userLoginResponseSchema = z.object({

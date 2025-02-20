@@ -9,14 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useUser } from '@/hooks/useUser';
+import { useGetUser } from '@/hooks/service-hooks/useGetUser';
+import { LayoutDashboard, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
 export const User = () => {
-  const { user } = useUser();
-
-  console.log({ user });
+  const { user } = useGetUser();
 
   if (!user) return;
 
@@ -24,37 +23,39 @@ export const User = () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src='https://github.com/shasscn.png' alt='@shadcn' />
+          <AvatarImage src="https://github.com/shasscn.png" alt="@shadcn" />
           <AvatarFallback>ART</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='max-w-3xs w-full'>
+      <DropdownMenuContent align="end" className="max-w-3xs w-full">
         <DropdownMenuLabel>
-          <div className='flex items-center gap-3'>
+          <div className="flex items-center gap-3">
             <Avatar>
-              <AvatarImage src='https://github.com/shasscn.png' alt='@shadcn' />
+              <AvatarImage src="https://github.com/shasscn.png" alt="@shadcn" />
               <AvatarFallback>ART</AvatarFallback>
             </Avatar>
 
-            <div className='max-w-[95%] truncate'>
+            <div className="max-w-[95%] truncate">
               <span>{user.email}</span>
               <div>
                 <span>ID:</span>
-                <span className=''>{user.id}</span>
+                <span className="">{user.id}</span>
               </div>
             </div>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <Link className='w-full h-full' href='/user-profile'>
-            Profile
-          </Link>
+        <DropdownMenuItem asChild>
+          <div>
+            <LayoutDashboard />
+            <Link href="/dashboard">Dashboard</Link>
+          </div>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <a className='w-full h-full' href={`${process.env.NEXT_PUBLIC_URL}/logout`}>
-            Logout
-          </a>
+        <DropdownMenuItem asChild>
+          <div>
+            <LogOut />
+            <Link href={`${process.env.NEXT_PUBLIC_URL}/logout`}>Logout</Link>
+          </div>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

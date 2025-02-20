@@ -1,4 +1,3 @@
-import { getCookiesSSR } from '@/helpers/ssr-cookies';
 import { axiosInstance } from '@/lib/axios-instance';
 import { IUserRegisterApi, userRegisterResponseSchema } from './user.schema';
 import { validateSchema } from '../validateSchema';
@@ -8,12 +7,10 @@ import { userLoginResponseSchema } from '../auth';
 
 export const getUser = async () => {
   const res = await axiosInstance.get(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
-    headers: {
-      Cookie: await getCookiesSSR(),
-    },
+    // headers: {
+    //   Cookie: await getCookiesSSR(),
+    // },
   });
-
-  console.log(res.data);
 
   return validateSchema({
     dto: res.data,

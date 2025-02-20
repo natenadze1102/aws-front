@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { z } from 'zod';
 
 interface ValidateConfig<T extends z.ZodTypeAny> {
@@ -29,6 +30,7 @@ function captureError(message: string, extra: Record<string, unknown> = {}): voi
     console.error(message, extra);
   } else {
     // Replace with actual error reporting (e.g., Sentry)
+
     console.log('Error reported:', message, extra);
   }
 }

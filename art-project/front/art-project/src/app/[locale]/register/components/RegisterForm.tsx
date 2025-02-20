@@ -3,7 +3,7 @@
 import { ArtistRegisterForm } from './artist-register-form/ArtistRegisterForm';
 import { UserRegisterForm } from './user-register-form/UserRegisterForm';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { z } from 'zod';
 import { userRegisterInputSchema } from '@/services/user';

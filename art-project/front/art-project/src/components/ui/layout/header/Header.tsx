@@ -1,7 +1,7 @@
 import { isAuth } from '@/helpers/is-auth';
 
 import { getUser } from '@/services/user';
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
 import Link from 'next/link';
 
 import { User } from './components/User';
@@ -14,18 +14,18 @@ export default async function Header() {
     queryFn: getUser,
   });
 
-  const { IsAuthorized } = await isAuth();
+  const { isAuthorized } = await isAuth();
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className='container'>
         <div className='flex justify-end w-full'>
-          {!IsAuthorized && (
+          {!isAuthorized && (
             <div className='flex gap-4'>
               <Link href={`${process.env.NEXT_PUBLIC_URL}/login`}>Login</Link>
             </div>
           )}
-          {IsAuthorized && (
+          {isAuthorized && (
             <>
               <User />
             </>
