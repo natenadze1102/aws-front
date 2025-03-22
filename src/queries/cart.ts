@@ -23,7 +23,10 @@ export function useCartData() {
 
 export function useInvalidateCart() {
   const queryClient = useQueryClient();
-  return React.useCallback(() => queryClient.invalidateQueries('cart', { exact: true }), []);
+  return React.useCallback(
+    () => queryClient.invalidateQueries('cart', { exact: true }),
+    []
+  );
 }
 
 export function useUpsertCart() {

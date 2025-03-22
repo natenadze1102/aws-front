@@ -1,19 +1,21 @@
-import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import Cart from "~/components/MainLayout/components/Cart";
-import { Link as RouterLink } from "react-router-dom";
-import Link from "@mui/material/Link";
+import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import Cart from '~/components/MainLayout/components/Cart';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import { getAuthToken, clearAuthToken } from '~/utils/auth';
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const auth = true;
+  const isAuthenticated = Boolean(getAuthToken());
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -23,13 +25,19 @@ export default function Header() {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    clearAuthToken();
+    handleClose();
+    window.location.href = '/';
+  };
+
   return (
     <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           <Link
             component={RouterLink}
-            sx={{ color: "inherit" }}
+            sx={{ color: 'inherit' }}
             underline="none"
             to="/"
           >
@@ -53,13 +61,13 @@ export default function Header() {
               id="menu-appbar"
               anchorEl={anchorEl}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               open={open}
               onClose={handleClose}
@@ -78,6 +86,17 @@ export default function Header() {
               >
                 Manage products
               </MenuItem>
+              {isAuthenticated ? (
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              ) : (
+                <MenuItem
+                  component={RouterLink}
+                  to="/login"
+                  onClick={handleClose}
+                >
+                  Login
+                </MenuItem>
+              )}
             </Menu>
           </div>
         )}
