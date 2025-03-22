@@ -47,6 +47,7 @@ export function useRemoveProductCache() {
 }
 
 export function useUpsertAvailableProduct() {
+  console.log('heere');
   return useMutation((values: AvailableProduct) =>
     axios.post<AvailableProduct>(`${API_PATHS.bff}/products`, values, {
       headers: {
