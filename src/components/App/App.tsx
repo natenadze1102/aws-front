@@ -1,4 +1,3 @@
-App.tsx;
 import { Routes, Route } from 'react-router-dom';
 import MainLayout from '~/components/MainLayout/MainLayout';
 import PageProductForm from '~/components/pages/PageProductForm/PageProductForm';
@@ -7,7 +6,7 @@ import PageOrder from '~/components/pages/PageOrder/PageOrder';
 import PageProductImport from '~/components/pages/admin/PageProductImport/PageProductImport';
 import PageCart from '~/components/pages/PageCart/PageCart';
 import PageProducts from '~/components/pages/PageProducts/PageProducts';
-import { PageLogin } from '~/components/pages/login/PageLogin.tsx';
+import { PageLogin } from '~/components/pages/login/PageLogin';
 
 import { Typography } from '@mui/material';
 
