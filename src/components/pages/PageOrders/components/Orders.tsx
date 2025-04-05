@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -19,6 +18,7 @@ export default function Orders() {
   const { data } = useOrders();
   const invalidateOrders = useInvalidateOrders();
   const { mutate: deleteOrder } = useDeleteOrder();
+  console.log({ data });
 
   return (
     <TableContainer component={Paper}>
@@ -36,23 +36,16 @@ export default function Orders() {
           {data?.map((order) => (
             <TableRow key={order.id}>
               <TableCell component="th" scope="row">
-                {
-                  // Try direct properties, then nested ones, fallback to '-'
-                  order.address?.firstName ||
-                    order.address?.address?.firstName ||
-                    '-'
-                }{' '}
-                {order.address?.lastName ||
-                  order.address?.address?.lastName ||
-                  ''}
-              </TableCell>
-              <TableCell align="right">{order.items.length}</TableCell>
-              <TableCell align="right">
-                {order.address?.address?.address || '-'}
+                {order.delivery?.address?.firstName || '-'}{' '}
+                {order.delivery?.address?.lastName || '-'}
               </TableCell>
               <TableCell align="right">
-                {order.statusHistory[order.statusHistory.length - 1].status}
+                {order.items ? order.items.length : 0}
               </TableCell>
+              <TableCell align="right">
+                {order.delivery?.address?.address || '-'}
+              </TableCell>
+              <TableCell align="right">{order.status || '-'}</TableCell>
               <TableCell align="right">
                 <Button
                   size="small"

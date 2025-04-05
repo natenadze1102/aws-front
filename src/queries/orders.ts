@@ -8,7 +8,7 @@ import { Order } from '~/models/Order';
 export function useOrders() {
   return useQuery<Order[], AxiosError>('orders', async () => {
     const token = localStorage.getItem('authorization_token');
-    const res = await axios.get<Order[]>(`${API_PATHS.order}/order`, {
+    const res = await axios.get<Order[]>(`${API_PATHS.order}/orders`, {
       headers: token ? { Authorization: `Basic ${token}` } : undefined,
     });
     return res.data;
