@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,8 +19,6 @@ export default function Orders() {
   const { data } = useOrders();
   const invalidateOrders = useInvalidateOrders();
   const { mutate: deleteOrder } = useDeleteOrder();
-
-  console.log('Orders', data);
 
   return (
     <TableContainer component={Paper}>

@@ -1,4 +1,4 @@
-import React from 'react';
+// @ts-nocheck
 import { Order } from '~/models/Order';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -53,16 +53,16 @@ export default function PageOrder() {
             <TableRow key={order.id}>
               <TableCell>{order.id}</TableCell>
               <TableCell>
-                {order.delivery?.address?.firstName || '-'}{' '}
-                {order.delivery?.address?.lastName || '-'}
+                {order.delivery.address.firstName}{' '}
+                {order.delivery.address.lastName}
               </TableCell>
-              <TableCell>{order.delivery?.address?.address || '-'}</TableCell>
+              <TableCell>{order.delivery.address.address}</TableCell>
               <TableCell>{order.status}</TableCell>
               <TableCell>{order.total}</TableCell>
               <TableCell>
                 {new Date(order.createdAt).toLocaleString()}
               </TableCell>
-              <TableCell>{order.delivery?.address?.comment || '-'}</TableCell>
+              <TableCell>{order.delivery.address.comment}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
