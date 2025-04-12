@@ -74,14 +74,11 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
             );
           } else if (err.response.status === 403) {
             setError(
-              'Access denied. You do not have permission to import files.'
+              'Access denied. You do not have permission to import files'
             );
           } else {
-            setError(
-              `Upload failed: ${err.response.status} - ${JSON.stringify(
-                err.response.data
-              )}`
-            );
+            console.log(err);
+            setError(`Upload failed`);
           }
         } else if (err.request) {
           // No response was received - likely CORS or network issue

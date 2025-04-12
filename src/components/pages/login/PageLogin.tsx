@@ -87,7 +87,8 @@ export const PageLogin = () => {
             Sign In
           </Button>
           <Typography variant="body2" color="text.secondary" align="center">
-            For testing, use your GitHub username and TEST_PASSWORD
+            For testing, use my GitHub username: natenadze1102 and
+            password:TEST_PASSWORD
           </Typography>
         </Box>
       </Paper>
