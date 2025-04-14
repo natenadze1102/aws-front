@@ -4,7 +4,8 @@ const API_PATHS = {
   import:
     'https://vcio5jrwnf.execute-api.eu-central-1.amazonaws.com/prod/import',
   bff: 'https://nkxzg11gig.execute-api.eu-central-1.amazonaws.com/prod',
-  cart: 'http://natenadze1102-cart-api-devt.eu-central-1.elasticbeanstalk.com/api',
+  // cart: 'http://natenadze1102-cart-api-devt.eu-central-1.elasticbeanstalk.com/api',
+  cart: 'https://dzeadadyb2u8g.cloudfront.net/api',
 };
 
 export default API_PATHS;
