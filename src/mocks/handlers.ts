@@ -16,14 +16,22 @@ export const handlers = [
     return res(ctx.status(200));
   }),
   rest.get(`${API_PATHS.bff}/products`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.delay(), ctx.json<AvailableProduct[]>(availableProducts));
+    return res(
+      ctx.status(200),
+      ctx.delay(),
+      ctx.json<AvailableProduct[]>(availableProducts)
+    );
   }),
   rest.get(`${API_PATHS.bff}/product/:id`, (req, res, ctx) => {
     const product = availableProducts.find((p) => p.id === req.params.id);
     if (!product) {
       return res(ctx.status(404));
     }
-    return res(ctx.status(200), ctx.delay(), ctx.json<AvailableProduct>(product));
+    return res(
+      ctx.status(200),
+      ctx.delay(),
+      ctx.json<AvailableProduct>(product)
+    );
   }),
   rest.get(`${API_PATHS.cart}/profile/cart`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.delay(), ctx.json<CartItem[]>(cart));
